@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import logoveri from '../img/layout_set_logo.png';
-import arrow from '../img/back.svg';
 
 class Nav extends Component {
     

@@ -1,6 +1,6 @@
+//import '../../src/Roulette.css';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';    
-import '../../src/Roulette.css';
 import { Button } from 'react-bootstrap';
 import Nav from '../Components/Nav';
 import mongo from '../lib/mongo-service';
@@ -81,6 +81,7 @@ class Canvas extends Component {
     componentDidMount() {
       this.drawRouletteWheel();
     }
+    
     //BYTE TO HEX
     byte2Hex(n) {
       const nybHexString = '0123456789ABCDEF';
@@ -120,22 +121,18 @@ class Canvas extends Component {
         const insideRadius = baseSize - 55;
   
         ctx = canvas.getContext('2d');
-        ctx.clearRect(0,0,800,800);
-        ctx.font = '36px Verifont';
         
+        ctx.clearRect(0,0,800,800);
+       
+        ctx.font = '36px Verifont';
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 2;
-  
-
-        // for(let i = 0; i < options.length; i++) {
-        // const angle = startAngle + i * arc;
-        
-        //   ctx.fillStyle = this.getColor(i,options.length);
+       
+   
+        for (let i = 0; i <colors.length; i++) {
+          const angle = startAngle + i * arc;
           
-          for (let i = 0; i <colors.length; i++) {
-            const angle = startAngle + i * arc;
-            
-            ctx.fillStyle = colors[i]
+          ctx.fillStyle = colors[i]
            
           //Dibujo de ruleta!
           ctx.beginPath();
