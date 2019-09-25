@@ -207,8 +207,7 @@ class Canvas extends Component {
       
       const img = new Image ()
       img.src = '../img/VALE.psd';
-      console.log(img)
-
+      
       const canvas = this.refs.canvas;
       const ctx = canvas.getContext('2d');
   
@@ -222,10 +221,10 @@ class Canvas extends Component {
 
       ctx.drawImage(img,0,0,100,100);
 
-      // ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 3);
       ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 0.5);
       ctx.restore();
-      mongo.create (text)   
+      this.getIp (text)
+      //mongo.create (text)   
       // this.props.onComplete(text);
     }
   
@@ -238,38 +237,50 @@ class Canvas extends Component {
     handleOnClick() {
       this.spin();
     }
+
+    getIp (text, ip) {
+      const publicIp = require('public-ip');
+ 
+      (async () => {
+        const ip = await publicIp.v4();
+      console.log(await publicIp.v4());
+      
+      console.log(text,ip)
+      mongo.create (text, ip) 
+    })();
+     
+    }
   
     render() {
-        const { baseSize } = this.props;
-        //<input type="button" value="spin" onClick={this.handleOnClick} className="button" id="spin" />
+      
+      const { baseSize } = this.props;
         
-
-        return (
-          <div className='background'>
-            <Nav/>
+      return (
+        <div className='background'>
+          <Nav/>
             <div className="roulette">
               <h1 style={{fontSize: '3rem'}}>LA RULETA DE VERITAS</h1> 
               <div className="roulette-container">
                 <canvas ref="canvas" width={baseSize * 2} height={baseSize * 2} className="roulette-canvas"></canvas>
-              </div>
-              <div className="roulette-container">
-                <Button 
-                  variant="success"
-                  value="spin" 
-                  onClick={this.handleOnClick} 
-                  className="button"  
-                  style={{
-                    fontFamily:'Verifont',
-                    fontSize:'20px',
-                    margin: '5rem 0',
-                  }} 
-                  id="spin">
-                  GIRAR!!
-                </Button>
-              </div>
+            </div>
+            <div className="roulette-container">
+              <Button 
+                variant="success"
+                value="spin" 
+                onClick={this.handleOnClick} 
+                className="button"  
+                style={{
+                  fontFamily:'Verifont',
+                  fontSize:'20px',
+                  margin: '5rem 0',
+                }} 
+                id="spin">
+                GIRAR!!
+              </Button>
             </div>
           </div>
-        );
-      }
-    }
+        </div>
+      );
+    };
+  };
   export default Canvas;

@@ -11,10 +11,10 @@ class Data {
       console.log(`URL of DB ${process.env.REACT_APP_PUBLIC_DOMAIN_2}`)
     }
     
-      create = (premio) => {
-        console.log(premio)
+      create = (premio , ip) => {
+        console.log(premio, ip)
         return this.Data
-          .post("data/post", { premio })
+          .post("data/post", { premio, ip })
           .then(({ data }) => data);
       }
 
