@@ -1,7 +1,7 @@
-import './Roulette.css';
-import './App.css';
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
+import './Roulette.css';
+import './App.css';
 import Canvas from './pages/Canvas';
 import NotFound from './Components/NotFound';
 import LoadingDots from './Components/LoadingDots';

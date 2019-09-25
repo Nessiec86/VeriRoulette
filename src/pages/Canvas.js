@@ -1,9 +1,9 @@
 //import '../../src/Roulette.css';
+import mongo from '../lib/mongo-service';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';    
 import { Button } from 'react-bootstrap';
 import Nav from '../Components/Nav';
-import mongo from '../lib/mongo-service';
 
 class Canvas extends Component {
     constructor(props) {
@@ -225,7 +225,7 @@ class Canvas extends Component {
       // ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 3);
       ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 0.5);
       ctx.restore();
-      // mongo.create (text)   
+      mongo.create (text)   
       // this.props.onComplete(text);
     }
   

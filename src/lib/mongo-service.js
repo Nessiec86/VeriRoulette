@@ -3,17 +3,25 @@ import axios from 'axios';
 
 class Data {
     constructor() {
-        this.Data = axios.create({
-          baseURL: process.env.PUBLIC_DOMAIN,
-          withCredentials: true
-        });
-      }
+      this.Data = axios.create({
+        baseURL: 'http://localhost:5000',
+        withCredentials: true,
+      });
+      console.log(`URL of DB ${process.env.REACT_APP_PUBLIC_DOMAIN}`)
+      console.log(`URL of DB ${process.env.REACT_APP_PUBLIC_DOMAIN_2}`)
+    }
     
-      create = (data) => {
-        const { premio } = data;
+      create = (premio) => {
+        console.log(premio)
         return this.Data
-          .post("/canvas", { premio })
+          .post("data/post", { premio })
           .then(({ data }) => data);
+      }
+
+      read = () => {
+        return this.Data
+          .get("data/list")
+          .then (({ data }) => data);
       }
     }
 
