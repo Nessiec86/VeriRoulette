@@ -4,11 +4,9 @@ import axios from 'axios';
 class Data {
     constructor() {
       this.Data = axios.create({
-        baseURL: 'http://localhost:5000',
+        baseURL: process.env.REACT_APP_PUBLIC_DOMAIN_2,
         withCredentials: true,
       });
-      console.log(`URL of DB ${process.env.REACT_APP_PUBLIC_DOMAIN}`)
-      console.log(`URL of DB ${process.env.REACT_APP_PUBLIC_DOMAIN_2}`)
     }
     
       create = (premio , ip) => {

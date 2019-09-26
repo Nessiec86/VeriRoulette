@@ -224,7 +224,7 @@ class Canvas extends Component {
       ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 0.5);
       ctx.restore();
       this.getIp (text)
-      //mongo.create (text)   
+      // mongo.create (text)   
       // this.props.onComplete(text);
     }
   

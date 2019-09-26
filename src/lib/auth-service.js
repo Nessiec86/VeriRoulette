@@ -3,7 +3,7 @@ import axios from "axios";
 class Auth {
   constructor() {
     this.auth = axios.create({
-      baseURL: process.env.REACT_APP_PUBLIC_DOMAIN,
+      baseURL: process.env.REACT_APP_PUBLIC_DOMAIN_2,
       withCredentials: true
     });
   }
