@@ -9,6 +9,10 @@ class Data {
     }
     
       create = (premio, ip, cordsLat, cordsLon) => {
+        if (cordsLat === null && cordsLon === null) {
+          cordsLat = 0
+          cordsLon = 0
+        }
         console.log(premio, ip, cordsLat, cordsLon)
         return this.Data
           .post("data/post", { premio, ip, cordsLat, cordsLon })

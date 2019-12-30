@@ -227,6 +227,7 @@ class Canvas extends Component {
       ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 800);
       ctx.restore();
       this.getIp (text)
+      
       // mongo.create (text)   
       // this.props.onComplete(text);
     }
@@ -240,26 +241,25 @@ class Canvas extends Component {
     handleOnClick() {
       this.spin();
     }
-
     
-        
-    getIp (text, ip) {
+    getIp (text) {
+      const cordsLat = this.props.coords.latitude
+      const cordsLon = this.props.coords.longitude
+   
       
       const publicIp = require('public-ip');
- 
+      
       (async () => {
         const ip = await publicIp.v4();
-      console.log(await publicIp.v4());
+        console.log(await publicIp.v4());
       
       console.log(text, ip, cordsLat, cordsLon)
       mongo.create (text, ip, cordsLat, cordsLon)
-      
-    })();
-     
-    }
+      })();
+    };
   
     render() {
-     
+      console.log(this.props)
       const { baseSize } = this.props;
         
       return (
