@@ -241,9 +241,10 @@ class Canvas extends Component {
       this.spin();
     }
 
+    
+        
     getIp (text, ip) {
-      const cordsLat = this.props.coords.latitude
-      const cordsLon = this.props.coords.longitude
+      
       const publicIp = require('public-ip');
  
       (async () => {
@@ -251,7 +252,8 @@ class Canvas extends Component {
       console.log(await publicIp.v4());
       
       console.log(text, ip, cordsLat, cordsLon)
-      mongo.create (text, ip, cordsLat, cordsLon) 
+      mongo.create (text, ip, cordsLat, cordsLon)
+      
     })();
      
     }
