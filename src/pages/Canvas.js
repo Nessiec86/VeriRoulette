@@ -4,8 +4,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';    
 import { Button } from 'react-bootstrap';
 import Nav from '../Components/Nav';
+import { geolocated } from "react-geolocated";
+
 
 class Canvas extends Component {
+  
     constructor(props) {
       super(props);
       this.state = {
@@ -221,7 +224,7 @@ class Canvas extends Component {
 
       ctx.drawImage(img,0,0,100,100);
 
-      ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, baseSize / 0.5);
+      ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 800);
       ctx.restore();
       this.getIp (text)
       // mongo.create (text)   
@@ -239,20 +242,22 @@ class Canvas extends Component {
     }
 
     getIp (text, ip) {
+      const cordsLat = this.props.coords.latitude
+      const cordsLon = this.props.coords.longitude
       const publicIp = require('public-ip');
  
       (async () => {
         const ip = await publicIp.v4();
       console.log(await publicIp.v4());
       
-      console.log(text,ip)
-      mongo.create (text, ip) 
+      console.log(text, ip, cordsLat, cordsLon)
+      mongo.create (text, ip, cordsLat, cordsLon) 
     })();
      
     }
   
     render() {
-      
+     
       const { baseSize } = this.props;
         
       return (
@@ -273,6 +278,8 @@ class Canvas extends Component {
                   fontFamily:'Verifont',
                   fontSize:'20px',
                   margin: '5rem 0',
+                  borderRadius: '4rem',
+                  padding: '2rem 1.5rem',
                 }} 
                 id="spin">
                 GIRAR!!
@@ -283,4 +290,10 @@ class Canvas extends Component {
       );
     };
   };
-  export default Canvas;
+//  export default Canvas;
+export default geolocated({
+  positionOptions: {
+      enableHighAccuracy: true,
+  },
+  userDecisionTimeout: 5000,
+})(Canvas);

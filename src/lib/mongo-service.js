@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 class Data {
     constructor() {
       this.Data = axios.create({
@@ -9,10 +8,10 @@ class Data {
       });
     }
     
-      create = (premio , ip) => {
-        console.log(premio, ip)
+      create = (premio, ip, cordsLat, cordsLon) => {
+        console.log(premio, ip, cordsLat, cordsLon)
         return this.Data
-          .post("data/post", { premio, ip })
+          .post("data/post", { premio, ip, cordsLat, cordsLon })
           .then(({ data }) => data);
       }
 
