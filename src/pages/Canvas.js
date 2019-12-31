@@ -1,11 +1,10 @@
 //import '../../src/Roulette.css';
 import mongo from '../lib/mongo-service';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';    
 import { Button } from 'react-bootstrap';
 import Nav from '../Components/Nav';
 import { geolocated } from "react-geolocated";
-
 
 class Canvas extends Component {
   
@@ -17,6 +16,8 @@ class Canvas extends Component {
         spinTime: 0,
         random: 0,
         arc: Math.PI / (props.options.length / 2),
+        cordsLat: 0,
+        cordsLon: 0,
       }
       this.spinTimer = null;
       this.handleOnClick = this.handleOnClick.bind(this);
@@ -220,8 +221,7 @@ class Canvas extends Component {
       ctx.save();
       ctx.font = 'bold 30px Verifont';
       const text = options[index]
-      console.log(text)
-
+      
       ctx.drawImage(img,0,0,100,100);
 
       ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 800);
@@ -243,23 +243,24 @@ class Canvas extends Component {
     }
     
     getIp (text) {
-      const cordsLat = this.props.coords.latitude
-      const cordsLon = this.props.coords.longitude
-   
+     
+      this.setState({
+        cordsLat: this.props.coords.latitude,
+        cordsLon: this.props.coords.longitude,
+      });
       
       const publicIp = require('public-ip');
       
       (async () => {
         const ip = await publicIp.v4();
-        console.log(await publicIp.v4());
-      
-      console.log(text, ip, cordsLat, cordsLon)
-      mongo.create (text, ip, cordsLat, cordsLon)
+        console.log(text, ip, this.state.cordsLat, this.state.cordsLon)
+        mongo.create (text, ip, this.state.cordsLat, this.state.cordsLon)
       })();
     };
   
     render() {
-      console.log(this.props)
+      console.log(this.props.coords)
+      
       const { baseSize } = this.props;
         
       return (
