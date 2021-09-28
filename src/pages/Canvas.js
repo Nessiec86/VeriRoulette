@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import Nav from '../Components/Nav';
 import { geolocated } from "react-geolocated";
+import { text } from 'dom-helpers';
 
 class Canvas extends Component {
   
@@ -18,6 +19,7 @@ class Canvas extends Component {
         arc: Math.PI / (props.options.length / 2),
         cordsLat: 0,
         cordsLon: 0,
+        txt:'',
       }
       this.spinTimer = null;
       this.handleOnClick = this.handleOnClick.bind(this);
@@ -36,46 +38,46 @@ class Canvas extends Component {
   
     static defaultProps = {
       options:  [
-        'BONO ARTESANA',
-        'PRODUCTO GRATIS',
-        'PRODUCTO GRATIS',
-        'BOLSA ALGODÓN',
-        'PRODUCTO GRATIS',
-        'PRODUCTO GRATIS',
-        'VALE DTO. 15%',
-        'PRODUCTO GRATIS',
-        'PRODUCTO GRATIS',
-        'VALE DTO. 15%', /*COMIENZO*/ 
-        'PRODUCTO GRATIS',
-        'PRODUCTO GRATIS',
+        'PRODUCTE GRATIS',
+        'COMPRA ONLINE -9€',
+        'PRODUCTE GRATIS',
+        'PRODUCTE GRATIS',
+        'PRODUCTE GRATIS',
+        'FRUITA I VERDURA -15%',
+        'PRODUCTE GRATIS',
+        'PRODUCTE GRATIS',
+        'PRODUCTE GRATIS',
+        'FORN ARTESANA GRATIS', /*COMIENZO*/ 
+        'PRODUCTE GRATIS',
+        'PRODUCTE GRATIS',
         ],
       colors: [
-        '#DCD080',
-        '#84C7B5',
-        '#EFB73A',
-        '#DDE8BC',
-        '#196F58',
-        '#EB6C7F',
-        '#DCD080',
-        '#84C7B5',
-        '#EFB73A',
-        '#DDE8BC',
-        '#196F58',
-        '#EB6C7F',
+        '#f5c8b9',
+        '#d75f3b',
+        '#f4c69d',
+        '#efa748',
+        '#495292',
+        '#6ebe9d',
+        '#f5c8b9',
+        '#d75f3b',
+        '#f4c69d',
+        '#efa748', /*COMIENZO*/ 
+        '#495292',
+        '#6ebe9d',
       ],
       text_colors: [
-        '#AC4424',
+        '#495292',
+        '#fffffe',
+        '#a0382a',
+        '#fffffe',
+        '#f3c7b8',
+        '#155540',
+        '#495292',
         '#DDE8BC',
-        '#DDE8BC',
-        '#196F58',
-        '#DDE8BC',
-        '#DDE8BC',
-        '#196F58',
-        '#DDE8BC',
-        '#DDE8BC',
-        '#EB6C7F',
-        '#DDE8BC',
-        '#DDE8BC',
+        '#a0382a',
+        '#452019', /*COMIENZO*/ 
+        '#f3c7b8',
+        '#155540',
       ],
       baseSize: 400,
       spinAngleStart: Math.random() * 10 + 10,
@@ -152,9 +154,35 @@ class Canvas extends Component {
           //ctx.rotate(angle + arc / 2 + Math.PI / 2);
           ctx.rotate(angle + arc / 22.5 + Math.PI / 22.5);
           const text = options[i];
-          ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-          ctx.restore();          
-        }
+          // ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+          ctx.fillText(text, -ctx.measureText(text).width / 2.2, 0, 275);
+          ctx.restore();       
+          
+          
+        //   function wrapText(context, text, x, y, maxWidth, lineHeight) {
+        //     var words = text.split(' ');
+        //     var line = '';
+    
+        //     for(var n = 0; n < words.length; n++) {
+        //       var testLine = line + words[n] + ' ';
+        //       var metrics = context.measureText(testLine);
+        //       var testWidth = metrics.width;
+        //       if (testWidth > maxWidth && n > 0) {
+        //         context.fillText(line, x, y);
+        //         line = words[n] + ' ';
+        //         y += lineHeight;
+        //       }
+        //       else {
+        //         line = testLine;
+        //       }
+        //     }
+        //     context.fillText(line, x, y);
+        //   }
+          
+        // let x =  ctx.measureText(text).width / 2 
+        // wrapText(ctx, text, 500, 200)
+        
+      }
   
         //Arrow
         ctx.fillStyle = 'red';
@@ -181,8 +209,12 @@ class Canvas extends Component {
 
       // RANDOM SPIN
       const random = Math.floor(Math.random() * (30 - 15)) + 15;
-      this.setState({ spinTime: 0 + 5, random: random }, () => this.rotate());
-      console.log(this.state.random)
+      this.setState({ 
+        spinTime: 0 + 5,
+        random: random,
+        txt: '',
+      }, () => this.rotate());
+      // console.log(this.state.random)
     }
   
     rotate(){
@@ -201,7 +233,7 @@ class Canvas extends Component {
           clearTimeout(this.spinTimer);
           this.spinTimer = setTimeout(() => this.rotate(), 30);
         })
-        console.log(this.state.random)
+        // console.log(this.state.random)
       }
     }
   
@@ -224,12 +256,13 @@ class Canvas extends Component {
       
       ctx.drawImage(img,0,0,100,100);
 
-      ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 800);
+      /*PRINT RESULT*/
+      //ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 800);
       ctx.restore();
+      
       this.getIp (text)
       
-      // mongo.create (text)   
-      // this.props.onComplete(text);
+            // this.props.onComplete(text);
     }
   
     easeOut(t, b, c, d) {
@@ -247,6 +280,7 @@ class Canvas extends Component {
       this.setState({
         cordsLat: this.props.coords.latitude,
         cordsLon: this.props.coords.longitude,
+        txt: text,
       });
       
       const publicIp = require('public-ip');
@@ -259,10 +293,10 @@ class Canvas extends Component {
     };
   
     render() {
-      console.log(this.props.coords)
-      
+      const { txt } = this.state     
       const { baseSize } = this.props;
-        
+       
+      console.log(txt)
       return (
         <div className='background'>
           <Nav/>
@@ -279,15 +313,18 @@ class Canvas extends Component {
                 className="button"  
                 style={{
                   fontFamily:'Verifont',
-                  fontSize:'20px',
+                  fontSize:'3rem',
                   margin: '5rem 0',
-                  borderRadius: '4rem',
-                  padding: '2rem 1.5rem',
+                  borderRadius: '6rem',
+                  padding: '3.6rem 2.1rem',
                 }} 
                 id="spin">
                 GIRAR!!
               </Button>
             </div>
+            <div className="roulette-container">
+              <h1 className='res'>{txt}</h1>
+            </div> 
           </div>
         </div>
       );
