@@ -275,7 +275,7 @@ class Canvas extends Component {
     
       return (
         <div className='background'>
-          <Nav/>
+          {/* <Nav/> */}
             <div className="roulette">
               <h1 style={{fontSize: '3rem', margin: '0 0 -25px 0'}}>LA RULETA DE VERITAS</h1> 
               <div className="roulette-container">
