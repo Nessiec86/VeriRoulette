@@ -79,7 +79,7 @@ class Canvas extends Component {
         '#f3c7b8',
         '#155540',
       ],
-      baseSize: 400,
+      baseSize: 450,
       spinAngleStart: Math.random() * 10 + 10,
       spinTimeTotal: Math.random() * 3 + 4 * 1000,
     };
@@ -155,34 +155,9 @@ class Canvas extends Component {
           ctx.rotate(angle + arc / 22.5 + Math.PI / 22.5);
           const text = options[i];
           // ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
-          ctx.fillText(text, -ctx.measureText(text).width / 2.2, 0, 275);
+          ctx.fillText(text, -ctx.measureText(text).width / 2.5, 0);
           ctx.restore();       
-          
-          
-        //   function wrapText(context, text, x, y, maxWidth, lineHeight) {
-        //     var words = text.split(' ');
-        //     var line = '';
-    
-        //     for(var n = 0; n < words.length; n++) {
-        //       var testLine = line + words[n] + ' ';
-        //       var metrics = context.measureText(testLine);
-        //       var testWidth = metrics.width;
-        //       if (testWidth > maxWidth && n > 0) {
-        //         context.fillText(line, x, y);
-        //         line = words[n] + ' ';
-        //         y += lineHeight;
-        //       }
-        //       else {
-        //         line = testLine;
-        //       }
-        //     }
-        //     context.fillText(line, x, y);
-        //   }
-          
-        // let x =  ctx.measureText(text).width / 2 
-        // wrapText(ctx, text, 500, 200)
-        
-      }
+        }
   
         //Arrow
         ctx.fillStyle = 'red';
@@ -190,9 +165,9 @@ class Canvas extends Component {
         //ctx.lineTo(baseSize + 10, baseSize - (outsideRadius + 20));
         //ctx.lineTo(baseSize + 0, baseSize - (outsideRadius - 5));
         //ctx.lineTo(baseSize - 10, baseSize - (outsideRadius + 20));
-        ctx.lineTo(baseSize + 10, baseSize - (340 + 20));
-        ctx.lineTo(baseSize + 0, baseSize - (340 - 5));
-        ctx.lineTo(baseSize - 10, baseSize - (340 + 20));
+        ctx.lineTo(baseSize + 15, baseSize - (380 + 25));
+        ctx.lineTo(baseSize + 0, baseSize - (380 - 5));
+        ctx.lineTo(baseSize - 15, baseSize - (380 + 25));
         ctx.fill();
         ctx.stroke();
       }
@@ -202,7 +177,8 @@ class Canvas extends Component {
       //CLEAR RESULT
       const canvas = this.refs.canvas;
       const ctx = canvas.getContext('2d');
-      ctx.clearRect(0,750,1000,100);
+      // ctx.clearRect(0,750,1000,100);
+      ctx.clearRect(0,750,1000,200);
 
       //SPIN FUNCTION
       this.spinTimer = null;
@@ -257,9 +233,9 @@ class Canvas extends Component {
       ctx.drawImage(img,0,0,100,100);
 
       /*PRINT RESULT*/
-      ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 800);
+      ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 920);
       ctx.restore();
-      
+    
       this.getIp (text)
       
             // this.props.onComplete(text);
@@ -301,9 +277,9 @@ class Canvas extends Component {
         <div className='background'>
           <Nav/>
             <div className="roulette">
-              <h1 style={{fontSize: '3rem'}}>LA RULETA DE VERITAS</h1> 
+              <h1 style={{fontSize: '3rem', margin: '0 0 -25px 0'}}>LA RULETA DE VERITAS</h1> 
               <div className="roulette-container">
-                <canvas ref="canvas" width={baseSize * 2} height={baseSize * 2} className="roulette-canvas"></canvas>
+                <canvas ref="canvas" width={baseSize * 2} height={baseSize * 2.1} className="roulette-canvas"></canvas>
             </div>
             <div className="roulette-container">
               <Button 
