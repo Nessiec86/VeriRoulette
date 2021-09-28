@@ -209,6 +209,7 @@ class Canvas extends Component {
 
       // RANDOM SPIN
       const random = Math.floor(Math.random() * (30 - 15)) + 15;
+     
       this.setState({ 
         spinTime: 0 + 5,
         random: random,
@@ -218,7 +219,6 @@ class Canvas extends Component {
     }
   
     rotate(){
-      
       const { spinAngleStart, spinTimeTotal } = this.props;
       if(this.state.spinTime > 2800) {
         clearTimeout(this.spinTimer);
@@ -257,7 +257,7 @@ class Canvas extends Component {
       ctx.drawImage(img,0,0,100,100);
 
       /*PRINT RESULT*/
-      //ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 800);
+      ctx.fillText(text, baseSize - ctx.measureText(text).width / 2, 800);
       ctx.restore();
       
       this.getIp (text)
@@ -276,10 +276,10 @@ class Canvas extends Component {
     }
     
     getIp (text) {
-     
+    
       this.setState({
-        cordsLat: this.props.coords.latitude,
-        cordsLon: this.props.coords.longitude,
+        // cordsLat: this.props.coords.latitude,
+        // cordsLon: this.props.coords.longitude,
         txt: text,
       });
       
@@ -287,16 +287,16 @@ class Canvas extends Component {
       
       (async () => {
         const ip = await publicIp.v4();
-        console.log(text, ip, this.state.cordsLat, this.state.cordsLon)
+        // console.log(text, ip, this.props.coords.latitude, this.props.coords.longitude)
         mongo.create (text, ip, this.state.cordsLat, this.state.cordsLon)
+    
       })();
     };
   
     render() {
       const { txt } = this.state     
       const { baseSize } = this.props;
-       
-      console.log(txt)
+    
       return (
         <div className='background'>
           <Nav/>
@@ -322,9 +322,9 @@ class Canvas extends Component {
                 GIRAR!!
               </Button>
             </div>
-            <div className="roulette-container">
+            {/* <div className="roulette-container">
               <h1 className='res'>{txt}</h1>
-            </div> 
+            </div>  */}
           </div>
         </div>
       );
