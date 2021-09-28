@@ -290,7 +290,7 @@ class Canvas extends Component {
                 style={{
                   fontFamily:'Verifont',
                   fontSize:'3rem',
-                  margin: '5rem 0',
+                  margin: '3rem 0',
                   borderRadius: '6rem',
                   padding: '3.6rem 2.1rem',
                 }} 
