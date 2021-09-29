@@ -7,7 +7,7 @@ import Nav from '../Components/Nav';
 import { geolocated } from "react-geolocated";
 import { text } from 'dom-helpers';
 
-class Canvas extends Component {
+class CanvasEs extends Component {
   
     constructor(props) {
       super(props);
@@ -38,18 +38,18 @@ class Canvas extends Component {
   
     static defaultProps = {
       options:  [
-        'PRODUCTE GRATIS',
+        'PRODUCTO GRATIS',
         'COMPRA ONLINE -9€',
-        'PRODUCTE GRATIS',
-        'PRODUCTE GRATIS',
-        'PRODUCTE GRATIS',
-        'FRUITA I VERDURA -15%',
-        'PRODUCTE GRATIS',
-        'PRODUCTE GRATIS',
-        'PRODUCTE GRATIS',
+        'PRODUCTO GRATIS',
+        'PRODUCTO GRATIS',
+        'PRODUCTO GRATIS',
+        'FRUTA Y VERDURA -15%',
+        'PRODUCTO GRATIS',
+        'PRODUCTO GRATIS',
+        'PRODUCTO GRATIS',
         'FORN ARTESANA GRATIS', /*COMIENZO*/ 
-        'PRODUCTE GRATIS',
-        'PRODUCTE GRATIS',
+        'PRODUCTO GRATIS',
+        'PRODUCTO GRATIS',
         ],
       colors: [
         '#f5c8b9',
@@ -312,4 +312,4 @@ export default geolocated({
       enableHighAccuracy: true,
   },
   userDecisionTimeout: 5000,
-})(Canvas);
+})(CanvasEs);

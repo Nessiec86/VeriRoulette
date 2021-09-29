@@ -3,6 +3,8 @@ import {Route, Switch} from 'react-router-dom';
 import './Roulette.css';
 import './App.css';
 import Canvas from './pages/Canvas';
+import CanvasEs from './pages/CanvasEs';
+import Home from './pages/Home';
 import NotFound from './Components/NotFound';
 import LoadingDots from './Components/LoadingDots';
 require('dotenv').config();
@@ -35,7 +37,9 @@ class App extends Component {
       </div>
       :
       <Switch>
-      <Route exact path="/" component={Canvas} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/ca" component={Canvas} />
+        <Route exact path="/es" component={CanvasEs} />
         <Route path='*' exact={true} component={NotFound} />
       </Switch>
     );
