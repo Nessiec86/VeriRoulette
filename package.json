@@ -1,27 +1,22 @@
 {
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false
-  },
   "name": "bamboov2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.21.4",
-    "bootstrap": "^4.3.1",
-    "dotenv": "^8.6.0",
-    "ipify": "^6.0.0",
-    "public-ip": "^6.0.1",
-    "react": "^16.9.0",
-    "react-bootstrap": "^1.0.0-beta.12",
-    "react-clock": "^2.4.0",
-    "react-dom": "^16.9.0",
-    "react-geolocated": "^3.0.1",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "^5.0.1",
-    "styled-components": "^4.3.2",
-    "utf8": "^3.0.0"
+    "axios": "0.21.4",
+    "bootstrap": "4.3.1",
+    "dotenv": "8.1.0",
+    "ipify": "4.0.0",
+    "public-ip": "3.2.0",
+    "react": "16.9.0",
+    "react-bootstrap": "1.0.0-beta.12",
+    "react-clock": "2.4.0",
+    "react-dom": "16.9.0",
+    "react-geolocated": "3.0.1",
+    "react-router-dom": "5.0.1",
+    "react-scripts": "4.0.3",
+    "styled-components": "4.3.2",
+    "utf8": "3.0.0"
   },
   "scripts": {
     "deploy": "npm run build && firebase deploy",
