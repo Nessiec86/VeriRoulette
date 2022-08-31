@@ -39,15 +39,15 @@ class CanvasEs extends Component {
     static defaultProps = {
       options:  [
         'PRODUCTO GRATIS',
-        'COMPRA ONLINE -9€',
+        '9€ SHOP.VERITAS.ES',
         'PRODUCTO GRATIS',
         'PRODUCTO GRATIS',
+        '15% FRUTA Y VERDURA',
         'PRODUCTO GRATIS',
-        'FRUTA Y VERDURA -15%',
+        '15% CUINA VERITAS',
         'PRODUCTO GRATIS',
         'PRODUCTO GRATIS',
-        'PRODUCTO GRATIS',
-        'FORN ARTESANA GRATIS', /*COMIENZO*/ 
+        '15% HIGIENE PERSONAL', /*COMIENZO*/ 
         'PRODUCTO GRATIS',
         'PRODUCTO GRATIS',
         ],
