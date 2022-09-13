@@ -1,20 +1,27 @@
 @font-face {
-  font-family: 'Verifont';
+  /* font-family: 'Verifont';
   src:
     local('Verifont'),
     local('Verifont'),
-    url(./font/veri.otf) format('opentype');
+    url(./font/veri.otf) format('opentype'); */
+  font-family: 'Suisse';
+  src:
+    local('Suisse'),
+    local('Suisse'),
+    url(./font/SuisseSign-Bold.otf) format('opentype');
 }
 body {
   font-family: 'Verifont';
-  background-color: rgb(249, 234, 198)!important;
+  /* background-color: rgb(249, 234, 198)!important; */
+  background-color: #f0efee!important;
 }
 .roulette {
   font-family: 'Verifont';
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: rgb(249, 234, 198);
+  /* background-color: rgb(249, 234, 198); */
+  background-color: #f0efee;
   width: 100%;
 }
 .roulette-container {

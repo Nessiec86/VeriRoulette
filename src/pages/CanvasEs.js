@@ -6,6 +6,8 @@ import { Button } from 'react-bootstrap';
 import Nav from '../Components/Nav';
 import { geolocated } from "react-geolocated";
 import { text } from 'dom-helpers';
+import logoES from '../img/LogoES.png';
+
 
 class CanvasEs extends Component {
   
@@ -38,46 +40,46 @@ class CanvasEs extends Component {
   
     static defaultProps = {
       options:  [
-        'PRODUCTO GRATIS',
-        '9€ SHOP.VERITAS.ES',
-        'PRODUCTO GRATIS',
-        'PRODUCTO GRATIS',
-        '15% FRUTA Y VERDURA',
-        'PRODUCTO GRATIS',
-        '15% CUINA VERITAS',
-        'PRODUCTO GRATIS',
-        'PRODUCTO GRATIS',
-        '15% HIGIENE PERSONAL', /*COMIENZO*/ 
-        'PRODUCTO GRATIS',
-        'PRODUCTO GRATIS',
+        'Producto gratis',
+        '9€ shop.veritas.es',
+        'Producto gratis',
+        'Producto gratis',
+        '15% fruta y verdura',
+        'Producto gratis',
+        '15% Cuina Veritas',
+        'Producto gratis',
+        'Producto gratis',
+        '15% Higiene personal', /*COMIENZO*/ 
+        'Producto gratis',
+        'Producto gratis',
         ],
       colors: [
-        '#f5c8b9',
-        '#d75f3b',
-        '#f4c69d',
-        '#efa748',
-        '#495292',
-        '#6ebe9d',
-        '#f5c8b9',
-        '#d75f3b',
-        '#f4c69d',
-        '#efa748', /*COMIENZO*/ 
-        '#495292',
-        '#6ebe9d',
+        '#ff373a',
+        '#00493c',
+        '#ff959a',
+        '#430f28',
+        '#00b17e',
+        '#ffbb4e',
+        '#ff373a',
+        '#00493c',
+        '#ff959a',
+        '#430f28', /*COMIENZO*/ 
+        '#00b17e',
+        '#ffbb4e',
       ],
       text_colors: [
-        '#495292',
-        '#fffffe',
-        '#a0382a',
-        '#fffffe',
-        '#f3c7b8',
-        '#155540',
-        '#495292',
-        '#DDE8BC',
-        '#a0382a',
-        '#452019', /*COMIENZO*/ 
-        '#f3c7b8',
-        '#155540',
+        '#ffffff',
+        '#ffffff',
+        '#ffffff',
+        '#ffffff',
+        '#ffffff',
+        '#ffffff',
+        '#ffffff',
+        '#ffffff',
+        '#ffffff',
+        '#ffffff', /*COMIENZO*/ 
+        '#ffffff',
+        '#ffffff',
       ],
       baseSize: 450,
       spinAngleStart: Math.random() * 10 + 10,
@@ -130,7 +132,7 @@ class CanvasEs extends Component {
         
         ctx.clearRect(0,0,800,800);
        
-        ctx.font = '36px Verifont';
+        ctx.font = '28px Suisse';
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 2;
        
@@ -152,7 +154,7 @@ class CanvasEs extends Component {
           ctx.translate(baseSize + Math.cos(angle + arc / 2) * /*textRadius*/ 200, 
                         baseSize + Math.sin(angle + arc / 2) * /*textRadius*/ 200);
           //ctx.rotate(angle + arc / 2 + Math.PI / 2);
-          ctx.rotate(angle + arc / 22.5 + Math.PI / 22.5);
+          ctx.rotate(angle + arc / 20 + Math.PI / 20);
           const text = options[i];
           // ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
           ctx.fillText(text, -ctx.measureText(text).width / 2.5, 0);
@@ -227,7 +229,7 @@ class CanvasEs extends Component {
       const arcd = arc * 180 / Math.PI;
       const index = Math.floor((360 - degrees % 360) / arcd);
       ctx.save();
-      ctx.font = 'bold 30px Verifont';
+      ctx.font = 'bold 20px Suisse';
       const text = options[index]
       
       ctx.drawImage(img,0,0,100,100);
@@ -277,7 +279,8 @@ class CanvasEs extends Component {
         <div className='background'>
           <Nav/>
             <div className="roulette">
-              <h1 style={{fontSize: '3rem', margin: '0 0 -25px 0', width:'100%'}}>LA RULETA DE VERITAS</h1> 
+              {/* <h1 style={{fontSize: '3rem', margin: '0 0 -25px 0', width:'100%'}}>LA RULETA DE VERITAS</h1>  */}
+              <img src={logoES} style={{margin: '10px auto -20px auto', width:'25%'}}></img>
               <div className="roulette-container">
                 <canvas ref="canvas" width={baseSize * 2} height={baseSize * 2.1} className="roulette-canvas"></canvas>
             </div>
@@ -288,8 +291,8 @@ class CanvasEs extends Component {
                 onClick={this.handleOnClick} 
                 className="button"  
                 style={{
-                  fontFamily:'Verifont',
-                  fontSize:'3rem',
+                  fontFamily:'Suisse',
+                  fontSize:'2rem',
                   margin: '3rem 0',
                   borderRadius: '6rem',
                   padding: '3.6rem 2.1rem',
